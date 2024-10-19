@@ -18,8 +18,8 @@
       }
     ],
     "paths": {
-      // "@/*": ["./src/*"],
-      "@/*": ["./src/app/page.tsx*"]
+      "@/*": ["./src/*"],
+      // "@/*": ["./src/app/page.tsx*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/components/spinner", "cashfree.d.ts"],
