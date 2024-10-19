@@ -14,24 +14,20 @@ type PortalFormProps = {
   customerId: string;
   domainid: string;
   email: string;
-  bookings?:
-    | {
-        date: Date;
-        slot: string;
-      }[]
-    | undefined;
-  products?:
-    | {
-        name: string;
-        image: string;
-        price: number;
-      }[]
-    | undefined;
+  bookings?: {
+    date: Date;
+    slot: string;
+  }[];
+  products?: {
+    name: string;
+    image: string;
+    price: number;
+  }[];
   amount?: number;
   stripeId?: string;
 };
 
-const PortalForm = ({
+const PortalForm: React.FC<PortalFormProps> = ({
   questions,
   type,
   customerId,
@@ -41,7 +37,7 @@ const PortalForm = ({
   email,
   amount,
   stripeId,
-}: PortalFormProps) => {
+}) => {
   const {
     step,
     onNext,
@@ -60,7 +56,7 @@ const PortalForm = ({
     if (questions.every((question) => question.answered)) {
       onNext();
     }
-  }, []);
+  }, [questions, onNext]);
 
   return (
     <form
@@ -85,21 +81,21 @@ const PortalForm = ({
         amount={amount}
         stripeId={stripeId}
       />
-      {(step == 1 || step == 2) && (
+      {(step === 1 || step === 2) && (
         <div className="w-full flex justify-center">
           <div className="w-[400px] grid grid-cols-2 gap-3">
             <div
               className={cn(
                 "rounded-full h-2 col-span-1",
-                step == 1 ? "bg-indigo-600" : "bg-platinum"
+                step === 1 ? "bg-indigo-600" : "bg-platinum"
               )}
-            ></div>
+            />
             <div
               className={cn(
                 "rounded-full h-2 col-span-1",
-                step == 2 ? "bg-indigo-600" : "bg-platinum"
+                step === 2 ? "bg-indigo-600" : "bg-platinum"
               )}
-            ></div>
+            />
           </div>
         </div>
       )}
