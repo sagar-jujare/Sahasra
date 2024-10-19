@@ -1,3 +1,4 @@
+"use client";
 import { onGetBlogPosts } from "@/actions/landing";
 import NavBar from "@/components/navbar";
 import { Button } from "@/components/ui/button";
